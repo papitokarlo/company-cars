@@ -1,0 +1,55 @@
+{%extends "base.html"%}
+{%load static%}
+{%block head%}
+    <title>
+           Cars 
+    </title>
+{%endblock%}
+
+
+{%block body%}
+    <header>
+        <nav class="nav nav-pills nav-fill">
+            <a class="nav-item nav-link active" href="{%url 'home'%}">Home</a>
+            <a class="nav-item nav-link active" href="{%url 'employeers'%}">Employeers</a>
+            <a class="nav-item nav-link active" href="{%url 'allcars'%}">Cars</a>
+            <a class="nav-item nav-link active" href='admin/'>ADMIN</a>  
+        </nav>
+
+    </header>
+
+    <div style="margin:30px">
+        {%include "searchbar.html"%}
+    </div>
+
+    <section class="s_three_columns o_cc o_cc2 pt64 pb64" data-vcss="001" data-snippet="s_three_columns" data-name="Columns" style="margin:10px">            
+        <div class="container">                
+            <div class="row d-flex align-items-stretch">  
+                {% for post in cars %}
+                    <div class="col-lg-4 s_col_no_bgcolor pt16 pb16" style="margin-bottom:10px">
+                        <div class="card bg-white h-100" style="box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 4px 0px !important;">
+                            <a  href=""> 
+                                <div class="card-body">
+                                    {% if post.image %}
+                                    <img class="card-img-top" src="{{ post.image.url }}" alt="" loading="lazy">
+                                    {%else%}
+                                    <p> no image to show </p>
+                                    {%endif%}
+                                    <h5 href="" class="card-title">ნომერი : {{post.number}} </h5>
+                                    <h5 href="" class="card-title">მოდელი : {{post.model}} </h5>
+                                    <h5 href="" class="card-title">ფირმა : {{post.marck}} </h5>
+                                    <h5 href="" class="card-title">ფერი : {{post.color}} </h5>
+                                    <small href="" class="text-muted">გამოშვების თარიღი: {{post.date}}</small>  
+                                    <br></br>
+                                    <a  href="{% url 'update_car' post.pk%}" class="btn btn-primary">update</a>
+                                    <a href="{% url 'deletecar' post.id%}" class="btn btn-outline-danger btn-sm">delete</a>                                    
+                                </div>    
+                            </a>                                                     
+                        </div>
+                    </div>
+                {%endfor%}
+            </div>                
+        </div> 
+           
+    </section>
+{%endblock%}

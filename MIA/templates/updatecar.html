@@ -1,0 +1,30 @@
+{%extends "base.html"%}
+{%load static%}
+{%block head%}
+    <title>
+           update {{car}} 
+    </title>
+{%endblock%}
+
+
+{%block body%}
+    <header>
+        <nav class="nav nav-pills nav-fill">
+            <a class="nav-item nav-link active" href="{%url 'home'%}">Home</a>
+            <a class="nav-item nav-link active" href="{%url 'employeers'%}">Employeers</a>
+            <a class="nav-item nav-link active" href="{%url 'allcars'%}">Cars</a>
+            <a class="nav-item nav-link active" href='admin/'>ADMIN</a>  
+        </nav>
+
+    </header>
+    <h1>update {{car}} </h1>
+    <br/>
+    <form action='' method =POST>
+        {% csrf_token %}
+        {{form.as_p}}
+        <br/>
+        <input type = "submit" value="update" class="btn btn-primary"/>
+    </form>
+    
+
+{%endblock%}

@@ -1,0 +1,111 @@
+{% extends "base.html"%}
+{%load static%}
+{%block head%}
+    <title>
+           {{search}} 
+    </title>
+{%endblock%}
+{%block body%}
+    <header>
+        <nav class="nav nav-pills nav-fill">
+            <a class="nav-item nav-link active" href="{%url 'home'%}">Home</a>
+            <a class="nav-item nav-link active" href="{%url 'employeers'%}">Employeers</a>
+            <a class="nav-item nav-link active" href="{%url 'allcars'%}">Cars</a>
+            <a class="nav-item nav-link active" href='admin/'>ADMIN</a>  
+        </nav>
+
+    </header>
+    
+    <main>
+        <div >
+            <h2>ძებნის შედეგები: {{search}} -ისთვის:</h2>
+            <section class="s_three_columns o_cc o_cc2 pt64 pb64" data-vcss="001" data-snippet="s_three_columns" data-name="Columns" style="margin:10px">            
+                <div class="container">                
+                    <div class="row d-flex align-items-stretch">
+                        {% for post in posts %}
+                        <div class="col-lg-4 s_col_no_bgcolor pt16 pb16" style="margin-bottom:10px">
+                            <div class="card bg-white h-100" style="box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 4px 0px !important;">
+                                <a  href="{% url 'detail' pk=post.pk%}"> 
+                                    <div class="card-body">
+                                        
+                                        <h5 href="" class="card-title">სახელი : {{post.name}} </h5>
+                                        <h5 href="" class="card-title">გვარი : {{post.lastname}} </h5>
+                                        <h5 href="" class="card-title">მამის სახელი : {{post.father}} </h5>
+                                        <h5 href="" class="card-title">დაბადების თარიღი : {{post.birth}} </h5>
+                                        <small href="" class="text-muted">ID N: {{post.selfid}}</small>  
+                                        <hr>                                        
+                                        <h6>{{post.name}} 
+                                            {%if post.check_car|length > 0 %} 
+                                                has :
+                                                {%for car in post.check_car%}
+                                                    {{  car}}                                                 
+                                                {%endfor%}
+                                            {%else%} 
+                                                does not have any car yet
+                                            {%endif%}
+                                        </h6>                                        
+                                    </div>    
+                                </a>                                                     
+                            </div>
+                        </div>
+                        {%endfor%}
+                        {% for post in selfid%}
+                        <div class="col-lg-4 s_col_no_bgcolor pt16 pb16" style="margin-bottom:10px">
+                            <div class="card bg-white h-100" style="box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 4px 0px !important;">
+                                <a  href="{% url 'detail' pk=post.pk%}"> 
+                                    <div class="card-body">
+                                        
+                                        <h5 href="" class="card-title">სახელი : {{post.name}} </h5>
+                                        <h5 href="" class="card-title">გვარი : {{post.lastname}} </h5>
+                                        <h5 href="" class="card-title">მამის სახელი : {{post.father}} </h5>
+                                        <h5 href="" class="card-title">დაბადების თარიღი : {{post.birth}} </h5>
+                                        <small href="" class="text-muted">ID N: {{post.selfid}}</small>  
+                                        <hr>                                        
+                                        <h6>{{post.name}} 
+                                            {%if post.check_car|length > 0 %} 
+                                                has :
+                                                {%for car in post.check_car%}
+                                                    {{  car}}                                                 
+                                                {%endfor%}
+                                            {%else%} 
+                                                does not have any car yet
+                                            {%endif%}
+                                        </h6> 
+                                    </div>    
+                                </a>                                                     
+                            </div>
+                        </div>
+                        {%endfor%}
+                        {% for post in lastname%}
+                        <div class="col-lg-4 s_col_no_bgcolor pt16 pb16" style="margin-bottom:10px">
+                            <div class="card bg-white h-100" style="box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 4px 0px !important;">
+                                <a  href="{% url 'detail' pk=post.pk%}"> 
+                                    <div class="card-body">
+                                        
+                                        <h5 href="" class="card-title">სახელი : {{post.name}} </h5>
+                                        <h5 href="" class="card-title">გვარი : {{post.lastname}} </h5>
+                                        <h5 href="" class="card-title">მამის სახელი : {{post.father}} </h5>
+                                        <h5 href="" class="card-title">დაბადების თარიღი : {{post.birth}} </h5>
+                                        <small href="" class="text-muted">ID N: {{post.selfid}}</small>  
+                                        <hr>                                        
+                                        <h6>{{post.name}} 
+                                            {%if post.check_car|length > 0 %} 
+                                                has :
+                                                {%for car in post.check_car%}
+                                                    {{  car}}                                                 
+                                                {%endfor%}
+                                            {%else%} 
+                                                does not have any car yet
+                                            {%endif%}
+                                        </h6> 
+                                    </div>    
+                                </a>                                                     
+                            </div>
+                        </div>
+                        {%endfor%}
+                    </div>                
+                </div>           
+            </section>
+        </div>
+    </main>
+{%endblock%}

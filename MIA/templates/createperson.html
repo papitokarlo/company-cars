@@ -1,0 +1,30 @@
+{% extends "base.html"%}
+{%load static%}
+{%block head%}
+    <title>
+        create
+    </title>
+{%endblock%}
+{%block body%}
+    <header>
+        <nav class="nav nav-pills nav-fill">
+            <a class="nav-item nav-link active" href="{%url 'home'%}">Home</a>
+            <a class="nav-item nav-link active" href="{%url 'employeers'%}">Employeers</a>
+            <a class="nav-item nav-link active" href='admin/'>ADMIN</a>  
+        </nav>
+    </header>
+    <center>
+        <h1> CREATE employeer:</h1>
+        <br/><br/>
+
+        {%if submitt%}
+                You added employeer succesfully!!!
+        {%else%}
+            <form action="" method=POST>
+                {% csrf_token %}
+                {{forms.as_p}}
+                <input type ="submit" value="Submit" class = "btn btn-secondary">
+            </form>
+        {%endif%}
+    </center>
+{%endblock%}

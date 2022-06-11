@@ -1,0 +1,91 @@
+{%extends "base.html"%}
+{%load static%}
+{%block head%}
+    <title>
+           {{employeers}} 
+    </title>
+{%endblock%}
+
+
+{%block body%}
+    <header>
+        <nav class="nav nav-pills nav-fill">
+            <a class="nav-item nav-link active" href="{%url 'home'%}">Home</a>
+            <a class="nav-item nav-link active" href="{%url 'employeers'%}">Employeers</a>
+            <a class="nav-item nav-link active" href="{%url 'allcars'%}">Cars</a>
+            <a class="nav-item nav-link active" href='admin/'>ADMIN</a>  
+        </nav>
+
+    </header>
+    <section class="s_three_columns o_cc o_cc2 pt64 pb64" data-vcss="001" data-snippet="s_three_columns" data-name="Columns" style="margin:10px">            
+        <div class="container">                
+            <div class="row d-flex align-items-stretch">  
+                <div id="content-wrapper">
+                    <div class="column" > 
+                        <table class="table table-hover table-dark">
+                            <tbody>                            
+                                <tr>
+                                    <th scope="row">სახელი</th>
+                                    <td>{{employeers.name}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">გვარი</th>
+                                    <td>{{employeers.lastname}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">მამის სახელი</th>
+                                    <td>{{employeers.father}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">პირადი No</th>
+                                    <td>{{employeers.selfid}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">დაბადების თრიღი</th>
+                                    <td>{{employeers.birth}}</td>
+                                </tr>                            
+                            </tbody>
+                        </table>   
+                        {% if car|length < 1 %}
+                            <h2>{{employeers.name}}  has not any car yet</h2>
+                        {%else%}
+                            <h2>{{employeers.name}}  has {{car|length}} car</h2>
+                        {%for i in car%}
+                        <table class="table table-hover table-dark">
+                            <tbody>                            
+                                <tr>
+                                    <th scope="row">ნომერი</th>
+                                    <td>{{i.number}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">მარკა</th>
+                                    <td>{{i.marck}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">მოდელი</th>
+                                    <td>{{i.model}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">ფერი</th>
+                                    <td>{{i.color}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">გამოშვების წელი</th>
+                                    <td>{{i.date}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        {% if i.image  %}
+                            <img id="featured" style="width:30%;" src="{{i.image.url}}" alt="sataiur">
+                        {%else%}
+                            <h5> No image to show </h5>
+                        {%endif%}
+                        {%endfor%}    
+                        {%endif%}                    
+                    </div>
+                </div>
+            </div>                
+        </div> 
+           
+    </section>
+{%endblock%}

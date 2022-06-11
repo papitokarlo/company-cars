@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{%load static%}
+{%block head%}
+    <title>
+        home 
+    </title>
+{%endblock%}
+
+{%block body%}
+    <div class="card text-center" style="width:100%; background-color:rgba(181, 209, 222, 0.8)">
+        <div class="card-header">
+          INITIAL PAGE
+            </div>
+            <div style="margin:30px">
+                {%include "searchbar.html"%}
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">To create data you  have to go admin page, linl bellow, or View all employeers data </h5>
+                <a href='admin/' class="btn btn-primary">CREATE AS ADMIN</a>
+                <a href="employeers" class="btn btn-secondary">VIEW</a>
+                <a href="add-car" class="btn btn-secondary">add car</a>
+                <a href="add-person" class="btn btn-secondary">add person</a>
+            </div>
+        </div>
+    {%endblock%}
+
+</html>
