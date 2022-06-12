@@ -22,7 +22,7 @@ class carForm(ModelForm):
             'marck' : forms.TextInput(attrs={'class':'form-control', 'placeholder':'marck'}),
             'model' : forms.TextInput(attrs={'class':'form-control', 'placeholder':'model'}),
             'date' : forms.DateInput(attrs={'class':'form-control', 'placeholder':'date:13/09/2001'}),
-            #'image' : forms.ImageField(),
+            'image' : forms.ClearableFileInput(),
         }
 
 class CustomMMCF(forms.ModelMultipleChoiceField):
