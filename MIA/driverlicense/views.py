@@ -58,7 +58,8 @@ def search(request):
 def add_car(request):
     submitted = False
     if request.method == "POST":
-        form = carForm(request.POST)
+        form = carForm(request.POST, request.FILES)
+        print(form)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect('/add-car?submitted=True')
@@ -98,7 +99,7 @@ def update_person(request, pk):
     
 def update_car(request, pk):
     car =  get_object_or_404(Cars, pk=pk)
-    form = carForm(request.POST or None, instance=car )
+    form = carForm(request.POST, request.FILES or None, instance=car, )
     if form.is_valid():
         form.save()
         return redirect('allcars')
